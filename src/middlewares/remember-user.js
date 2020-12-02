@@ -9,8 +9,9 @@ export async function rememberUser(req, res, next) {
     if (!cookies[KEY]) {
         let id = uuid();
         res.setHeader('Set-Cookie', cookie.serialize(KEY, id, {
-            // httpOnly: true,
-            maxAge: 60 * 60 * 24 * 365
+            httpOnly: true,
+            maxAge: 60 * 60 * 24 * 365,
+            sameSite: true,
         }));
         req.userId = id;
         req.newUser = true;

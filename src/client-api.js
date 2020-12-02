@@ -6,6 +6,7 @@ export const executeServerAction = async (params) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(params),
+        credentials: "same-origin"
     });
     return response.json();
 }
