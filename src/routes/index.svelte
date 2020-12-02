@@ -30,21 +30,23 @@
         }, 50);
     }
 
-
     $: collectionIsEmpty = cards.length === 0;
 </script>
 
 <script context="module">
     export async function preload(page, session) {
-        const res = await this.fetch(`/api/collection`);
+        const res = await this.fetch(`/api/collection?userId=${session.userId}`);
         return {cards: await res.json()}
     }
 </script>
 
 <style>
     .emptyWrap {
-        width: 100%;
-        height: calc(100vh - 6rem);
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
         display: grid;
         place-content: center;
     }

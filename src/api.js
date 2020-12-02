@@ -88,7 +88,7 @@ export const getMoreItems = async (userId) => {
         }
     }
     await redis.rpush(k, ids);
-    return Promise.all(ids.reverse().map(getItemById));
+    return Promise.all(ids.map(getItemById));
 }
 
 export const moveCollectionItem = async (userId, from, to) => {

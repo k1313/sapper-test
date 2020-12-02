@@ -90,6 +90,7 @@
   .cell {
     justify-self: stretch;
     height: 100%;
+    min-height: 200px;
   }
 
   .CardsContainer {
@@ -123,7 +124,7 @@
   {#each cells as cell, index (cell.key)}
     <div class="cell"
          animate:flip={{duration: 100}}
-         out:fade={{duration: cell.data === 'dropzone' ? 0 : 250}}
+         out:fly={{x:300, y: -300, duration: cell.data === 'dropzone' ? 0 : 550}}
          in:scale={{duration: cell.data === 'dropzone' ? 0 : 750}}
     >
       {#if (cell.data === 'dropzone')}
