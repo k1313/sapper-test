@@ -34,7 +34,7 @@ export async function fetchData(page, limit = 100) {
 //endregion
 
 //region redis
-export const redis = new Redis();
+export const redis = new Redis(process.env.REDIS_URL);
 
 /**
  * Элемент коллекции по ключу
