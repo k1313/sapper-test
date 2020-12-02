@@ -67,15 +67,15 @@
     async function handleCardDrop(e) {
         const {newIndex} = e.detail;
         console.log(`${draggingIndex} => ${newIndex}`)
-        const {ok} = await executeServerAction({action: 'move', from: draggingIndex, to: newIndex});
-        if (ok) {
-            const f = draggingIndex;
-            const tmp = cards.splice(f, 1);
-            cards.splice(newIndex, 0, tmp[0]);
-            cards = [...cards];
-        }
+        const f = draggingIndex, t = newIndex;
         draggingIndex = undefined
         dropzonePosition = undefined
+        const {ok} = await executeServerAction({action: 'move', from: draggingIndex, to: newIndex});
+        if (ok) {
+            const tmp = cards.splice(f, 1);
+            cards.splice(t, 0, tmp[0]);
+            cards = [...cards];
+        }
     }
 
     function handleCardDragEnd() {
