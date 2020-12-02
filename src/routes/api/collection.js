@@ -9,7 +9,7 @@ import {
 
 export async function get(req, res) {
     const userId = req.query.userId || req.userId;
-    const items = await getUserCollection(req.userId);
+    const items = await getUserCollection(userId);
     send(res, 200, items);
 }
 
